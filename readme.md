@@ -22,7 +22,7 @@ A **production-ready, visually stunning mood-based music streaming website** wit
 ### 🎵 Music Features
 
 - **Mood-Based Navigation**: Happy, Lofi/Chill, Study, Sleep, Trending, Recommended
-- **18+ Sample Tracks**: Comprehensive music library across all moods
+- **15+ Sample Tracks**: Comprehensive music library across all moods
 - **Smart Filtering**: Filter by mood with smooth transitions
 - **Search Functionality**: Search by title, artist, or mood
 - **Sorting Options**: Sort by date, popularity, or alphabetically
@@ -340,3 +340,4 @@ For issues or questions:
 Built with ❤️ for music lovers and cosmic dreamers.
 
 **Happy Listening! 🎵✨**
+
