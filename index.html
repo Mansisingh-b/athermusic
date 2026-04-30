@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Aether Music - A mood-based music streaming platform with stunning cosmic design"
+    />
+    <meta
+      name="keywords"
+      content="music, streaming, mood, playlist, cosmic, aether"
+    />
+    <meta name="author" content="Aether Music" />
+
+    <!-- Preconnect to Google Fonts for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <title>Aether Music - Mood-Based Music Streaming</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body data-theme="dark">
+    <!-- Animated Cosmic Background -->
+    <div class="cosmic-background">
+      <div class="cosmic-orb orb-1"></div>
+      <div class="cosmic-orb orb-2"></div>
+      <div class="cosmic-orb orb-3"></div>
+      <div class="stars"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <!-- Logo -->
+          <a href="#" class="logo" aria-label="Aether Music Home">
+            <div class="logo-icon">
+              <i class="fas fa-music"></i>
+            </div>
+            <span>Aether Music</span>
+          </a>
+
+          <!-- Search Bar -->
+          <div class="search-container">
+            <i class="fas fa-search search-icon" aria-hidden="true"></i>
+            <input
+              type="search"
+              class="search-input"
+              placeholder="Search tracks, artists, or moods..."
+              aria-label="Search music"
+              id="searchInput"
+            />
+          </div>
+
+          <!-- Theme Toggle -->
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Toggle theme"
+            title="Toggle dark/light mode"
+          >
+            <i class="fas fa-moon" id="themeIcon"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+      <!-- Mood Navigation -->
+      <nav class="mood-nav" aria-label="Mood categories">
+        <div class="mood-buttons" id="moodButtons">
+          <button class="mood-btn active" data-mood="all" aria-pressed="true">
+            <i class="fas fa-music"></i> All Tracks
+          </button>
+          <button class="mood-btn" data-mood="happy" aria-pressed="false">
+            <i class="fas fa-sun"></i> Happy
+          </button>
+          <button class="mood-btn" data-mood="lofi" aria-pressed="false">
+            <i class="fas fa-coffee"></i> Lofi/Chill
+          </button>
+          <button class="mood-btn" data-mood="study" aria-pressed="false">
+            <i class="fas fa-book"></i> Study
+          </button>
+          <button class="mood-btn" data-mood="sleep" aria-pressed="false">
+            <i class="fas fa-moon"></i> Sleep
+          </button>
+          <button class="mood-btn" data-mood="trending" aria-pressed="false">
+            <i class="fas fa-fire"></i> Trending
+          </button>
+          <button class="mood-btn" data-mood="recommended" aria-pressed="false">
+            <i class="fas fa-star"></i> Recommended
+          </button>
+        </div>
+      </nav>
+
+      <!-- Controls Bar -->
+      <div class="controls-bar">
+        <div class="sort-controls">
+          <label for="sortSelect" class="sort-label">Sort by:</label>
+          <select id="sortSelect" class="sort-select" aria-label="Sort tracks">
+            <option value="default">Default</option>
+            <option value="date">Newest First</option>
+            <option value="popularity">Most Popular</option>
+            <option value="alphabetical">A-Z</option>
+          </select>
+        </div>
+        <div class="track-count" id="trackCount" aria-live="polite">
+          18 tracks
+        </div>
+      </div>
+
+      <!-- Music Grid -->
+      <section class="music-grid" id="musicGrid" aria-label="Music tracks">
+        <!-- Music cards will be dynamically inserted here -->
+      </section>
+
+      <!-- Empty State (hidden by default) -->
+      <div class="empty-state hidden" id="emptyState">
+        <div class="empty-state-icon">
+          <i class="fas fa-music"></i>
+        </div>
+        <p class="empty-state-text">No tracks found</p>
+        <p>Try adjusting your search or filters</p>
+      </div>
+    </main>
+
+    <!-- Sticky Music Player -->
+    <footer class="player" id="player" role="region" aria-label="Music player">
+      <div class="player-content">
+        <!-- Now Playing Info -->
+        <div class="now-playing">
+          <img
+            src=""
+            alt="Album cover"
+            class="now-playing-image"
+            id="playerImage"
+          />
+          <div class="now-playing-info">
+            <div class="now-playing-title" id="playerTitle">Select a track</div>
+            <div class="now-playing-artist" id="playerArtist">
+              No track playing
+            </div>
+          </div>
+          <div class="waveform paused" id="waveform" aria-hidden="true">
+            <div class="waveform-bar"></div>
+            <div class="waveform-bar"></div>
+            <div class="waveform-bar"></div>
+            <div class="waveform-bar"></div>
+            <div class="waveform-bar"></div>
+          </div>
+        </div>
+
+        <!-- Player Controls -->
+        <div class="player-controls">
+          <div class="controls-buttons">
+            <button
+              class="control-btn"
+              id="prevBtn"
+              aria-label="Previous track"
+              title="Previous (Left Arrow)"
+            >
+              <i class="fas fa-backward"></i>
+            </button>
+
+            <button
+              class="control-btn play-pause"
+              id="playPauseBtn"
+              aria-label="Play"
+              title="Play/Pause (Space)"
+            >
+              <i class="fas fa-play" id="playPauseIcon"></i>
+            </button>
+
+            <button
+              class="control-btn"
+              id="nextBtn"
+              aria-label="Next track"
+              title="Next (Right Arrow)"
+            >
+              <i class="fas fa-forward"></i>
+            </button>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="progress-container">
+            <span class="time-display" id="currentTime">0:00</span>
+            <div
+              class="progress-bar"
+              id="progressBar"
+              role="slider"
+              aria-label="Seek"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+              tabindex="0"
+            >
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <span class="time-display" id="totalTime">0:00</span>
+          </div>
+        </div>
+
+        <!-- Volume Controls -->
+        <div class="volume-controls">
+          <button
+            class="volume-btn"
+            id="volumeBtn"
+            aria-label="Mute"
+            title="Mute/Unmute"
+          >
+            <i class="fas fa-volume-up" id="volumeIcon"></i>
+          </button>
+          <div
+            class="volume-slider"
+            id="volumeSlider"
+            role="slider"
+            aria-label="Volume"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="70"
+            tabindex="0"
+          >
+            <div class="volume-fill" id="volumeFill" style="width: 70%"></div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  <!-- Hidden Audio Element -->
+  <audio id="audioPlayer" preload="metadata"></audio>
+
+  <!-- Hidden YouTube Player (for YouTube tracks) -->
+  <div id="youtube-player" style="position: absolute; top: -9999px; left: -9999px; width: 1px; height: 1px; pointer-events: none;"></div>
+
+  <!-- YouTube IFrame API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+
+  <!-- Scripts -->
+  <script src="music-data.js"></script>
+  <script src="youtube-player.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
